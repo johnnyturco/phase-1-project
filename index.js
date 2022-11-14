@@ -4,8 +4,14 @@ function searchForm(){
   cityForm.addEventListener('submit', (e) => {
     e.preventDefault();
     
+    const city = e.target['city-input'].value;
+
+    const cityHeader = document.createElement('h2');
+    cityHeader.textContent = city;
+    cityForm.append(cityHeader);
+
     breweryResults.textContent = "";
-    let cityUrl = `https://api.openbrewerydb.org/breweries?by_city=${e.target['city-input'].value}&per_page=50`
+    let cityUrl = `https://api.openbrewerydb.org/breweries?by_city=${city}&per_page=50`
 
     searchForBreweries(cityUrl);
 
