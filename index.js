@@ -25,8 +25,14 @@ function searchForBreweries(cityUrl){
 
       individualBrewery.addEventListener('click', (e) => {
         const address = document.createElement('p');
+        const phone = document.createElement('p');
+        const website = document.createElement('p');
+
         address.textContent = `${brewery.street}, ${brewery.city}, ${brewery.state} ${brewery.postal_code}`;
-        individualBrewery.append(address);
+        phone.textContent = brewery.phone
+        website.textContent = brewery.website_url
+
+        individualBrewery.append(address, phone, website);
       })
     })
   })
