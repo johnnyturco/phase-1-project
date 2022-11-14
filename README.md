@@ -1,5 +1,5 @@
 ## Project Pitch
-Look up local breweries by city, state, or zip code.
+Look up local breweries by city, state, or ZIP code.
 
 ## User Stories
 As a user, I can search for local breweries by toggling between city, state, or zip code and then search based on a provided input.
