@@ -1,3 +1,5 @@
+
+
 let cityUrl;
 function searchByCity(){
   const cityForm = document.querySelector('#search-city-form');
@@ -17,3 +19,5 @@ function searchByCity(){
   })
 }
 searchByCity();
+
+//comments section
