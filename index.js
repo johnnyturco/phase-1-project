@@ -5,7 +5,7 @@ function searchForm(){
     e.preventDefault();
     
     breweryResults.textContent = "";
-    let cityUrl = `https://api.openbrewerydb.org/breweries?by_city=${e.target['city-input'].value}`
+    let cityUrl = `https://api.openbrewerydb.org/breweries?by_city=${e.target['city-input'].value}&per_page=50`
 
     searchForBreweries(cityUrl);
 
@@ -19,10 +19,15 @@ function searchForBreweries(cityUrl){
   .then(r => r.json())
   .then(breweries => {
     breweries.forEach(brewery => {
-      //console.log(brewery.name)
       const individualBrewery = document.createElement('li')
       individualBrewery.textContent = brewery.name
       breweryResults.append(individualBrewery)
+
+      individualBrewery.addEventListener('click', (e) => {
+        const address = document.createElement('p');
+        address.textContent = `${brewery.street}, ${brewery.city}, ${brewery.state} ${brewery.postal_code}`;
+        individualBrewery.append(address);
+      })
     })
   })
 }
