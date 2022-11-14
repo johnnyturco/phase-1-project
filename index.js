@@ -4,13 +4,17 @@ function searchByCity(){
     e.preventDefault();
 
     let city = e.target['city-input'].value;
-    let cityUrl = `https://api.openbrewerydb.org/breweries?by_city=${city}&per_page=10`
+    let cityUrl = `https://api.openbrewerydb.org/breweries?by_city=${city}`
 
     fetch(cityUrl)
       .then(r => r.json())
       .then(breweries => {
+        const breweryResults = document.querySelector('#brewery-results')
         breweries.forEach(brewery => {
-        console.log(brewery.name)
+        //console.log(brewery.name)
+        const individualBrewery = document.createElement('li')
+        individualBrewery.textContent = brewery.name
+        breweryResults.append(individualBrewery)
     })
   })
   })
