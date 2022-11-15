@@ -1,10 +1,10 @@
-const breweryResults = document.querySelector('#brewery-results')
+const breweryResults = document.querySelector('#results')
 function searchForm(){
-  const cityForm = document.querySelector('#search-city-form');
+  const cityForm = document.querySelector('#search-form');
   cityForm.addEventListener('submit', (e) => {
     e.preventDefault();
     
-    const city = e.target['city-input'].value;
+    const city = e.target['search-input'].value;
 
     const cityHeader = document.createElement('h2');
     cityHeader.textContent = city;
