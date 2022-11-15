@@ -13,13 +13,17 @@ function searchForm(){
     cityHeader.textContent = "";
 
     let cityUrl = `https://api.openbrewerydb.org/breweries?by_city=${city}&per_page=50`
-
     searchForBreweries(cityUrl);
 
     cityForm.reset();
   })
 }
 searchForm();
+
+
+
+
+
 
 function searchForBreweries(cityUrl){
   const cityForm = document.querySelector('#search-form');
@@ -30,10 +34,15 @@ function searchForBreweries(cityUrl){
   .then(r => r.json())
   .then(breweries => {
     breweries.forEach(brewery => {
+      const breweryItem = document.createElement('article');
 
-      const individualBrewery = document.createElement('p');
+      const individualBrewery = document.createElement('button');
       individualBrewery.textContent = brewery.name;
-      breweryResults.append(individualBrewery);
+
+      breweryItem.append(individualBrewery);
+
+      breweryResults.append(breweryItem);
+      
 
       individualBrewery.addEventListener('click', (e) => {
         const address = document.createElement('p');
@@ -44,7 +53,8 @@ function searchForBreweries(cityUrl){
         phone.textContent = brewery.phone;
         website.textContent = brewery.website_url;
 
-        individualBrewery.append(address, phone, website);
+        individualBrewery.after(address, phone, website);
+        
       })
     })
   })
