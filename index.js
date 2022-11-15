@@ -23,7 +23,7 @@ searchForm();
 
 function searchForBreweries(cityUrl){
   const cityForm = document.querySelector('#search-form');
-  cityHeader.textContent = city;
+  cityHeader.textContent = city.toUpperCase();
   cityForm.append(cityHeader);
 
   fetch(cityUrl)
