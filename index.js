@@ -1,16 +1,16 @@
 const breweryResults = document.querySelector('#results')
+const cityHeader = document.createElement('h2');
+let city;
+
 function searchForm(){
-  const cityForm = document.querySelector('#search-form');
+  cityForm = document.querySelector('#search-form');
   cityForm.addEventListener('submit', (e) => {
     e.preventDefault();
     
-    const city = e.target['search-input'].value;
-
-    const cityHeader = document.createElement('h2');
-    cityHeader.textContent = city;
-    cityForm.append(cityHeader);
+    city = e.target['search-input'].value;
 
     breweryResults.textContent = "";
+    cityHeader.textContent = "";
 
     let cityUrl = `https://api.openbrewerydb.org/breweries?by_city=${city}&per_page=50`
 
@@ -22,10 +22,15 @@ function searchForm(){
 searchForm();
 
 function searchForBreweries(cityUrl){
+  const cityForm = document.querySelector('#search-form');
+  cityHeader.textContent = city;
+  cityForm.append(cityHeader);
+
   fetch(cityUrl)
   .then(r => r.json())
   .then(breweries => {
     breweries.forEach(brewery => {
+
       const individualBrewery = document.createElement('p');
       individualBrewery.textContent = brewery.name;
       breweryResults.append(individualBrewery);
