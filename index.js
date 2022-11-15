@@ -1,3 +1,28 @@
+//dark mode / light mode testing
+
+const themeIcon = document.querySelector('#theme-icon')
+//checks if dark mode supported & if dark mode preferred
+if(window.matchMedia && window.matchMedia('(prefers-color-scheme: dark)').matches){
+  // console.log('dark mode preferred');
+  themeIcon.src = 'images/dark-mode-icon.svg'
+} else{
+  // console.log('dark mode not preferred')
+  themeIcon.src = 'images/light-mode-icon.svg'
+}
+
+//checks if user changes mode
+window.matchMedia('(prefers-color-scheme: dark)').addEventListener('change', (e) => {
+  if(e.matches){
+    // console.log('changed to dark mode')
+    themeIcon.src = 'images/dark-mode-icon.svg'
+  } else{
+    // console.log('changed to light mode')
+    themeIcon.src = 'images/light-mode-icon.svg'
+  }
+})
+
+
+
 const breweryResults = document.querySelector('#results')
 const cityHeader = document.createElement('h2');
 let city;
