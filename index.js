@@ -1,16 +1,17 @@
 //dark mode / light mode testing
 
 const themeIcon = document.querySelector('#theme-icon')
-//checks if dark mode supported & if dark mode preferred
+
+//checks if dark mode supported & if dark mode on
 if(window.matchMedia && window.matchMedia('(prefers-color-scheme: dark)').matches){
-  // console.log('dark mode preferred');
+  // console.log('dark mode on');
   themeIcon.src = 'images/dark-mode-icon.svg'
 } else{
-  // console.log('dark mode not preferred')
+  // console.log('dark mode off')
   themeIcon.src = 'images/light-mode-icon.svg'
 }
 
-//checks if user changes mode
+//checks if user changes theme
 window.matchMedia('(prefers-color-scheme: dark)').addEventListener('change', (e) => {
   if(e.matches){
     // console.log('changed to dark mode')
