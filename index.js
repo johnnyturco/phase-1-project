@@ -40,7 +40,9 @@ function searchForBreweries(cityUrl){
         const phone = document.createElement('p');
         const website = document.createElement('p');
 
-        address.textContent = `${brewery.street}, ${brewery.city}, ${brewery.state} ${brewery.postal_code}`;
+          if(address.textContent = ""){
+            address.textContent = `${brewery.street}, ${brewery.city}, ${brewery.state} ${brewery.postal_code}`;}
+            
         phone.textContent = brewery.phone;
         website.textContent = brewery.website_url;
 
