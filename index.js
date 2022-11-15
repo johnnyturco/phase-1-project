@@ -34,11 +34,15 @@ function searchForBreweries(cityUrl){
   .then(r => r.json())
   .then(breweries => {
     breweries.forEach(brewery => {
+      const breweryItem = document.createElement('article');
 
       const individualBrewery = document.createElement('button');
-      individualBrewery.className = "brewery-button"
       individualBrewery.textContent = brewery.name;
-      breweryResults.append(individualBrewery);
+
+      breweryItem.append(individualBrewery);
+
+      breweryResults.append(breweryItem);
+      
 
       individualBrewery.addEventListener('click', (e) => {
         const address = document.createElement('p');
@@ -50,6 +54,7 @@ function searchForBreweries(cityUrl){
         website.textContent = brewery.website_url;
 
         individualBrewery.after(address, phone, website);
+        
       })
     })
   })
