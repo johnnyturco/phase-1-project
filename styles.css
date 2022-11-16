@@ -23,7 +23,7 @@ button {
   color: #ffffff;
   font-size: 1rem;
   cursor: pointer;
-  text-align: center;
+  text-align: left;
   transition: background 250ms ease-in-out, 
               transform 150ms ease;
 }
@@ -40,12 +40,4 @@ button:focus {
 
 button:active {
   transform: scale(0.99);
-}
-
-
-
-@media (prefers-color-scheme: dark) {
-  body {
-    background-color: black;
-  }
 }
