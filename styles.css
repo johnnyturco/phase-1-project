@@ -6,10 +6,18 @@ body {
 }
 
 .container {
-  text-align: center;
-  width: 70%;
-  margin-left: auto;
+  /* text-align: center; */
+  /* width: 70%; */
+  margin-left: 2rem;
   margin-right: auto;
+}
+
+.brewery-details {
+  padding: 0 2rem;
+}
+
+h3 {
+  padding: 0 2rem;
 }
 
 button {
@@ -19,18 +27,20 @@ button {
   padding: 1rem 2rem;
   margin: 0;
   text-decoration: none;
-  background: #ffbb1d;
-  color: #ffffff;
+  background: #ffbb1d61;
+  color: #000;
   font-size: 1rem;
+  font-weight: 600;
   cursor: pointer;
-  text-align: center;
+  text-align: left;
+  outline: 1px solid #fff;
   transition: background 250ms ease-in-out, 
               transform 150ms ease;
 }
 
 button:hover,
 button:focus {
-  background: #dd9d09;
+  background: #ffbb1d;
 }
 
 button:focus {
@@ -40,12 +50,4 @@ button:focus {
 
 button:active {
   transform: scale(0.99);
-}
-
-
-
-@media (prefers-color-scheme: dark) {
-  body {
-    background-color: black;
-  }
 }
