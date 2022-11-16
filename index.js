@@ -36,37 +36,71 @@ function searchForBreweries(cityUrl){
   .then(r => r.json())
   .then(breweries => {
     breweries.forEach(brewery => {
-      renderResults(brewery);
+      renderResultsTwo(brewery);
     })
   })
 }
 
-function renderResults(brewery){
+
+
+function renderResultsTwo(brewery){
   const breweryItem = document.createElement('article');
+  const breweryBtn = document.createElement('button');
+  const breweryDetails = document.createElement('div');
+  // breweryDetails.className = ""
+  breweryItem.append(breweryBtn, breweryDetails);
 
-  const individualBrewery = document.createElement('button');
-  individualBrewery.textContent = brewery.name;
+  const address = document.createElement('p');
+  const phone = document.createElement('p');
+  const website = document.createElement('p');
+  breweryDetails.append(address, phone, website)
 
-  breweryItem.append(individualBrewery);
-  breweryResults.append(breweryItem);
-  
-  let clicked = false;
-  individualBrewery.addEventListener('click', (e) => {
-    const address = document.createElement('p');
-    const phone = document.createElement('p');
-    const website = document.createElement('p');
+  breweryBtn.textContent = brewery.name;
+  address.textContent = `${brewery.street}, ${brewery.city}, ${brewery.state} ${brewery.postal_code}`;
+  phone.textContent = formatPhoneNumber(brewery.phone);
+  website.textContent = brewery.website_url;
 
-    if(clicked === false){
-      clicked = true;
+  breweryDetails.style.display = "none";
 
-      address.textContent = `${brewery.street}, ${brewery.city}, ${brewery.state} ${brewery.postal_code}`;
-      phone.textContent = formatPhoneNumber(brewery.phone);
-      website.textContent = brewery.website_url;
+  breweryResults.append(breweryItem)
 
-      individualBrewery.after(address, phone, website); 
+  breweryBtn.addEventListener('click', (e) => {
+    if(breweryDetails.style.display === "none"){
+      breweryDetails.style.display = "block";
+    } else{
+      breweryDetails.style.display ="none"
     }
   })
 }
+
+
+
+// function renderResults(brewery){
+//   const breweryItem = document.createElement('article');
+
+//   const individualBrewery = document.createElement('button');
+//   individualBrewery.textContent = brewery.name;
+
+//   breweryItem.append(individualBrewery);
+//   breweryResults.append(breweryItem);
+  
+//   let clicked = false;
+//   individualBrewery.addEventListener('click', (e) => {
+//     const address = document.createElement('p');
+//     const phone = document.createElement('p');
+//     const website = document.createElement('p');
+
+//     if(clicked === false){
+//       clicked = true;
+
+//       address.textContent = `${brewery.street}, ${brewery.city}, ${brewery.state} ${brewery.postal_code}`;
+//       phone.textContent = formatPhoneNumber(brewery.phone);
+//       website.textContent = brewery.website_url;
+
+//       individualBrewery.after(address, phone, website); 
+//     }
+//   })
+// }
 
 function formatPhoneNumber(phoneNumber){
   return phoneNumber.replace(/(\d{3})(\d{3})(\d{4})/,"($1) $2-$3");
