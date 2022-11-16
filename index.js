@@ -76,7 +76,7 @@ function searchForBreweries(cityUrl){
           clicked = true;
   
           address.textContent = `${brewery.street}, ${brewery.city}, ${brewery.state} ${brewery.postal_code}`;
-          phone.textContent = brewery.phone;
+          phone.textContent = formatPhoneNumber(brewery.phone);
           website.textContent = brewery.website_url;
   
           individualBrewery.after(address, phone, website); 
@@ -84,4 +84,8 @@ function searchForBreweries(cityUrl){
       })
     })
   })
+}
+
+function formatPhoneNumber(phoneNumber){
+  return phoneNumber.replace(/(\d{3})(\d{3})(\d{4})/,"($1) $2-$3");
 }
