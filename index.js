@@ -1,5 +1,5 @@
 const breweryResults = document.querySelector('#results')
-const cityHeader = document.createElement('h2');
+const cityHeader = document.createElement('h3');
 let city;
 let searchField = document.querySelector('#search-input');
 
@@ -36,18 +36,16 @@ function searchForBreweries(cityUrl){
   .then(r => r.json())
   .then(breweries => {
     breweries.forEach(brewery => {
-      renderResultsTwo(brewery);
+      renderResults(brewery);
     })
   })
 }
 
-
-
-function renderResultsTwo(brewery){
+function renderResults(brewery){
   const breweryItem = document.createElement('article');
   const breweryBtn = document.createElement('button');
   const breweryDetails = document.createElement('div');
-  // breweryDetails.className = ""
+  breweryDetails.className = "brewery-details"
   breweryItem.append(breweryBtn, breweryDetails);
 
   const address = document.createElement('p');
@@ -72,35 +70,6 @@ function renderResultsTwo(brewery){
     }
   })
 }
-
-
-
-// function renderResults(brewery){
-//   const breweryItem = document.createElement('article');
-
-//   const individualBrewery = document.createElement('button');
-//   individualBrewery.textContent = brewery.name;
-
-//   breweryItem.append(individualBrewery);
-//   breweryResults.append(breweryItem);
-  
-//   let clicked = false;
-//   individualBrewery.addEventListener('click', (e) => {
-//     const address = document.createElement('p');
-//     const phone = document.createElement('p');
-//     const website = document.createElement('p');
-
-//     if(clicked === false){
-//       clicked = true;
-
-//       address.textContent = `${brewery.street}, ${brewery.city}, ${brewery.state} ${brewery.postal_code}`;
-//       phone.textContent = formatPhoneNumber(brewery.phone);
-//       website.textContent = brewery.website_url;
-
-//       individualBrewery.after(address, phone, website); 
-//     }
-//   })
-// }
 
 function formatPhoneNumber(phoneNumber){
   return phoneNumber.replace(/(\d{3})(\d{3})(\d{4})/,"($1) $2-$3");
