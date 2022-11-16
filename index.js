@@ -1,22 +1,3 @@
-// //theme handling
-// const themeIcon = document.querySelector('#theme-icon')
-
-// //checks if dark mode supported & if dark mode on
-// if(window.matchMedia && window.matchMedia('(prefers-color-scheme: dark)').matches){
-//   themeIcon.src = 'images/dark-mode-icon.svg'
-// } else{
-//   themeIcon.src = 'images/light-mode-icon.svg'
-// }
-
-// //checks if user changes theme
-// window.matchMedia('(prefers-color-scheme: dark)').addEventListener('change', (e) => {
-//   if(e.matches){
-//     themeIcon.src = 'images/dark-mode-icon.svg'
-//   } else{
-//     themeIcon.src = 'images/light-mode-icon.svg'
-//   }
-// })
-
 const breweryResults = document.querySelector('#results')
 const cityHeader = document.createElement('h2');
 let city;
