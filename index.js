@@ -53,10 +53,17 @@ function renderResults(brewery){
   const website = document.createElement('p');
   breweryDetails.append(address, phone, website)
 
+  let streetAddress = brewery.street;
+  if(streetAddress === null){
+    streetAddress = "";
+  } else{
+    streetAddress = `${streetAddress}, `;
+  }
+
   breweryBtn.textContent = brewery.name;
-  address.textContent = `${brewery.street}, ${brewery.city}, ${brewery.state} ${brewery.postal_code}`;
+  address.textContent = `${streetAddress}${brewery.city}, ${brewery.state} ${brewery.postal_code}`;
   phone.textContent = formatPhoneNumber(brewery.phone);
-  website.textContent = brewery.website_url;
+  website.innerHTML = `<a href="${brewery.website_url}">Website</a>`
 
   breweryDetails.style.display = "none";
 
@@ -72,5 +79,5 @@ function renderResults(brewery){
 }
 
 function formatPhoneNumber(phoneNumber){
-  return phoneNumber.replace(/(\d{3})(\d{3})(\d{4})/,"($1) $2-$3");
+  return phoneNumber.replace(/(\d{3})(\d{3})(\d{4})/,'($1) $2-$3');
 }
