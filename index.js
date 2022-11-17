@@ -1,8 +1,7 @@
 const breweryResults = document.querySelector('#results')
 const cityHeader = document.createElement('h3');
+const searchField = document.querySelector('#search-input');
 let city;
-let searchField = document.querySelector('#search-input');
-let cityUrl = `https://api.openbrewerydb.org/breweries?by_city=denver&per_page=50`
 
 window.addEventListener('keyup', (e) => {
   if((e.code === 'Slash') && (document.activeElement.tagName !== 'INPUT') && (document.activeElement.tagName !== 'TEXTAREA')){
